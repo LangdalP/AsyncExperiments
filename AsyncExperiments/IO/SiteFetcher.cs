@@ -14,10 +14,10 @@ namespace AsyncExperiments.IO
             return urls.Select(url => DownloadPage(url));
         }
 
-        public static async Task<IEnumerable<string>> DownloadPagesAsyncExperiments(IEnumerable<string> urls)
+        public static async Task<IEnumerable<string>> DownloadPagesNaiveAsync(IEnumerable<string> urls)
         {
-            // The select loop calls DownloadPagesAsyncExperiments which creates completed tasks
-            var fetchTasks = urls.Select(url => DownloadPageAsyncExperiments(url)).ToList();
+            // The select loop calls DownloadPageNaiveAsync which creates completed tasks
+            var fetchTasks = urls.Select(url => DownloadPageNaiveAsync(url)).ToList();
             // When we get here, all tasks are already done
             var pages = await Task.WhenAll(fetchTasks);
             return pages;
@@ -41,7 +41,7 @@ namespace AsyncExperiments.IO
             return pages;
         }
 
-        private static Task<string> DownloadPageAsyncExperiments(string url)
+        private static Task<string> DownloadPageNaiveAsync(string url)
         {
             return Task.FromResult(DownloadPage(url));
         }

@@ -41,12 +41,12 @@ namespace AsyncExperiments.Controllers
             return View("FetchResults", new FetchResultsViewModel("Sync. fetch", Urls.Length, elapsedString));
         }
 
-        public async Task<ActionResult> AsyncExperimentsFetch()
+        public async Task<ActionResult> NaiveAsyncFetch()
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            var pages = (await SiteFetcher.DownloadPagesAsyncExperiments(Urls)).ToList();
+            var pages = (await SiteFetcher.DownloadPagesNaiveAsync(Urls)).ToList();
 
             stopwatch.Stop();
             var ts = stopwatch.Elapsed;
