@@ -1,0 +1,11 @@
+﻿@model AsyncExperiments.Models.FetchResultsViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>@Model.Title</h1>
+    <p class="lead">Time elapsed fetching @Model.NumPagesFetched HTML documents: @Model.TimeElapsed</p>
+    <p>I suggest force-refreshing this page multiple times to eliminate cold load effects</p>
+</div>
+
